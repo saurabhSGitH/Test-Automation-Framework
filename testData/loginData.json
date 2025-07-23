@@ -1,0 +1,16 @@
+{
+	"data":[
+		{
+			"emailAddress": "testInvalidEmail@hosintoy.com",
+			"password": "Password"
+		},
+		{
+			"emailAddress": "degawow873@hosintoy.com",
+			"password": "Password"
+		}
+				
+		
+	]
+	
+	
+}
