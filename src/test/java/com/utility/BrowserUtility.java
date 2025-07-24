@@ -21,7 +21,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import com.constants.Browser;
 
-public abstract class BrowserUtility {//removing abstract keyword here 
+public class BrowserUtility {//removing abstract keyword here 
 
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	Logger logger = LoggerUtility.getLogger(this.getClass());
