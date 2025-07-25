@@ -21,7 +21,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import com.constants.Browser;
 
-public class BrowserUtility {//removing abstract keyword here 
+public class BrowserUtility {// removing abstract keyword here
 
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	Logger logger = LoggerUtility.getLogger(this.getClass());
@@ -71,37 +71,36 @@ public class BrowserUtility {//removing abstract keyword here
 	public BrowserUtility(Browser browserName, boolean isHeadless) {
 		logger.info("Launching browser for" + browserName);
 
-		if (browserName == Browser.CHROME && isHeadless) {
-			if(isHeadless) {
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--headless=new"); //Ensure driver launches in headless mode
-			options.addArguments("--window-size=1920,1080");
-			
-			
-			driver.set(new ChromeDriver(options));
-		}
-			else {			driver.set(new ChromeDriver());
+		if (browserName == Browser.CHROME) {
+			if (isHeadless) {
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--headless=new"); // Ensure driver launches in headless mode
+				options.addArguments("--window-size=1920,1080");
+
+				driver.set(new ChromeDriver(options));
+			} else {
+				driver.set(new ChromeDriver());
 			}
+		} else if (browserName == Browser.EDGE) {
+			if (isHeadless) {
+				EdgeOptions options = new EdgeOptions();
+				options.addArguments("--headless=old"); // Ensure driver launches in headless mode
+				options.addArguments("disable-gpu");
+				driver.set(new EdgeDriver(options));
 			}
-			else if (browserName == Browser.EDGE) {
-		if(isHeadless) {
-		            EdgeOptions options = new EdgeOptions();
-					options.addArguments("--headless=old"); //Ensure driver launches in headless mode
-					options.addArguments("disable-gpu");
-					driver.set(new EdgeDriver(options));
-				}	
 			driver.set(new EdgeDriver());
 		} else if (browserName == Browser.FIRFOX) {
-			if(isHeadless) {
-	            FirefoxOptions options = new FirefoxOptions();
-				options.addArguments("--headless=old"); //Ensure driver launches in headless mode
+			if (isHeadless) {
+				FirefoxOptions options = new FirefoxOptions();
+				options.addArguments("--headless=old"); // Ensure driver launches in headless mode
 				options.addArguments("disable-gpu");
-			driver.set(new FirefoxDriver(options));
-		} else {
-			logger.info("Invalid browser name...Please select Chrome or Edge only");
+				driver.set(new FirefoxDriver(options));
+			} else {
+				logger.info("Invalid browser name...Please select Chrome or Edge only");
 
-			System.err.println("Invalid browser name...Please select Chrome or Edge only");
-		}}
+				System.err.println("Invalid browser name...Please select Chrome or Edge only");
+			}
+		}
 	}
 
 	public void goToWebsite(String url) {

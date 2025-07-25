@@ -30,7 +30,7 @@ public class TestBase {
 	
 	@BeforeMethod(description = "Load the homepage of the website")
 	public void setup(
-			@Optional ("chrome") String browser, 
+			@Optional ("chrome") String browser, //If testNg uses @parameters and you dont provide value, testng xml will throw error hence use optional
 			@Optional ("false") boolean isLambdaTest, 
 			@Optional ("true") boolean isHeadless, ITestResult result) {
 		
