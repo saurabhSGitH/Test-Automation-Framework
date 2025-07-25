@@ -20,7 +20,7 @@ public class ExcelReaderUtility {
 
 		// to read XLSX file use XSSF workbook
 
-		File xlsxFile = new File(System.getProperty("user.dir") + "//testData//LoginData.xlsx");
+		File xlsxFile = new File(System.getProperty("user.dir") + File.separator + "testData" + File.separator + "LoginData.xlsx");
 		XSSFWorkbook xssfWorkbook = null;
 		List<User> userList = null;
 		XSSFSheet xssfSheet;
@@ -43,9 +43,10 @@ public class ExcelReaderUtility {
 
 				user = new User(EmailAddressCell.toString(), PasswordCell.toString());
 				userList.add(user);
-				xssfWorkbook.close();
+				
 
 			}
+			xssfWorkbook.close();
 			} catch (InvalidFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
