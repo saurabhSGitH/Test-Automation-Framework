@@ -32,7 +32,7 @@ public class TestBase {
 	public void setup(
 			@Optional ("chrome") String browser, //If testNg uses @parameters and you dont provide value, testng xml will throw error hence use optional
 			@Optional ("false") boolean isLambdaTest, 
-			@Optional ("true") boolean isHeadless, ITestResult result) {
+			@Optional ("false") boolean isHeadless, ITestResult result) {
 		
 		this.isLambdaTest = isLambdaTest;
 		
